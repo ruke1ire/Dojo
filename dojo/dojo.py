@@ -8,16 +8,6 @@ class Dojo(ABC):
     The specific training objective and algorithm can be tested for different models, dataloaders, optimizers, and criteria.
     """
 
-    def __init__(self, obj_func, desc=None):
-        """
-        Initializes the dojo with an objective function (obj_func) and a description (desc).
-
-        :param obj_func: objective function of this Dojo (What is the model trying to minimize/maximize?)
-        :param desc: description of this Dojo
-        """
-        self.obj_func = obj_func
-        self.desc = desc
-
     @abstractmethod
     def train(self, model, dataloader, optimizer, criteria, logger):
         """
@@ -43,4 +33,15 @@ class Dojo(ABC):
         :return: average testing metric => loss/accuracy
         """
         pass
+
+    @abstractmethod
+    def obj_func(self, *args):
+        """
+        Objective function should be implemented here.
+
+        :param *args: list of arguments
+        :return: Loss/Value/etc.
+        """
+        pass
+
 
