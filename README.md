@@ -3,6 +3,6 @@ Structure for training/testing models
 
 ## Installation
 
-`console
+```console
 python3 setup.py install 
-`
+```
