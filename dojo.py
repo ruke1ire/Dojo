@@ -2,11 +2,15 @@ import abc
 from abc import ABC, abstractmethod
 
 class Dojo(ABC):
+    """
+    The dojo is where models are trained/tested for a specific purpose (objective function) in a specific way (training algorithm).
 
-    @abstractmethod
+    The specific training objective and algorithm can be tested for different models, dataloaders, optimizers, and criteria.
+    """
+
     def __init__(self, obj_func, desc=None):
         """
-        Initializes the training camp (Dojo) with an objective (obj_func) and a description (desc).
+        Initializes the dojo with an objective function (obj_func) and a description (desc).
 
         :param obj_func: objective function of this Dojo (What is the model trying to minimize/maximize?)
         :param desc: description of this Dojo
@@ -17,7 +21,7 @@ class Dojo(ABC):
     @abstractmethod
     def train(self, model, dataloader, optimizer, criteria, logger):
         """
-        Trains a model based on self.obj_func.
+        Training algorithm should be implemented here.
 
         :param model: model to be trained
         :param dataloader: data loader for training
@@ -31,7 +35,7 @@ class Dojo(ABC):
     @abstractmethod
     def test(self, model, dataloader, logger):
         """
-        Tests the model based on self.obj_func.
+        Testing algorithm should be implemented here.
 
         :param model: model to be tested
         :param dataloader: data loader for testing
